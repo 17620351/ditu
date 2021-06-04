@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国地图</title>
+    <script src="lib/echarts.min.js"></script>
+    <script src="lib/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="dadas" style="width: 600px;height: 400px; border: 1px solid #000;"></div>
+    <script>
+        var mcharts = echarts.init(document.querySelector('.dadas'))
+        $.get('./china.json', function (ret) {
+            // ret 就是中国各个省份的数据
+            // console.log(ret);
+            echarts.registerMap('chinamap', ret)
+            var option = {
+                geo: {
+                    type: 'map',
+                    map: 'chinamap',
+                    roam:true, //支持鼠标拖动以级缩放
+                    label:{
+                        show:true,//展示省份
+                        color:'red'
+                    },
+                    zoom:1, //设置初始化缩放比例
+                    center:[87.6,43.6],//设置地图中心点的坐标,
+                    
+                }
+            }
+            mcharts.setOption(option)
+        })
+
+    </script>
+</body>
+
+</html>

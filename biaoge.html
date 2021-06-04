@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/echarts.min.js"></script>
+
+</head>
+
+<body>
+    <div style="width: 700px; height: 400px;" class="dadas"></div>
+    <script>
+       var dadas=[88, 92, 63, 77, 94, 80, 72]
+       var dadas2=[80, 91, 49, 68, 98, 76, 35]
+        var mcharts = echarts.init(document.querySelector('.dadas'))
+        var option = {
+            dataZoom:[
+                {
+                    // type:'inside'  鼠标滚轮
+                    type:'slider' //可视化下部滚轮
+                }
+            ],
+            title: {
+                text: '成绩',
+                link: 'http://www.baidu.com',
+                target: 'blank',
+                textStyle: {
+                    // 样式
+                    color: 'red',
+
+                }
+            },
+            // 提示信息
+            tooltip:{
+                        trigger:'axis',
+                        // triggerOn:'click',
+                        // formatter:'{b}的成绩是{c}'
+                    }
+            ,
+            // 保存
+            toolbox:{
+                feature:{
+                    saveAsImage:{},//导出图片
+                    dataView:{},//数据视图
+                    restore:{},//还原按钮
+                    dataZoom:{},//区域缩放
+                    magicType:{
+                        // 动态图标之间的切换
+                        type:['bar','line']
+                    }
+                }
+            }
+            ,
+            xAxis: {
+                // x轴
+                type: 'category',//类目轴
+                data: ['张山', '李四', '王五', '闰土', '小明', '茅台', '二妈']
+            },
+            yAxis: {
+                // y轴
+                type: 'value'//数值轴
+            },
+            series: [
+                // 给y轴提供数据
+                {
+                    name: '语文',
+                    type: 'bar',
+                    // markPoint: {
+                    //     data: [
+                    //         {
+                    //             // type: 'max', name: '最大值'
+                    //         }, {
+                    //             // type: 'min', name: '最小值'
+                    //         }
+                    //     ]
+                    // },
+                    // markLine: {
+                    //     data: [
+                    //         {
+                    //             type: 'average', name: '平均值'
+                    //         }
+                    //     ]
+                    // },
+                    // barWidth:'30%' //宽度
+                    // ,
+                    data:dadas,
+                    label: {
+                        // 是否显示数值
+                        show: true,
+                        position:'top'
+                    },
+                },
+                {
+                    name:'数学',
+                    type:'bar',
+                    data:dadas2,
+                    label: {
+                        // 是否显示数值
+                        show: true,
+                        position:'top'
+                    },
+                }
+            ],
+            // 筛选系列
+            legend:{
+                data:['语文','数学']
+            }
+        }
+        // 传值
+        mcharts.setOption(option)
+    </script>
+</body>
+
+</html>
