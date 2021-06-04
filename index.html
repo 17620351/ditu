@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中国地图</title>
+    <title>地图</title>
     <script src="lib/echarts.min.js"></script>
     <script src="lib/jquery.min.js"></script>
 </head>
@@ -15,7 +15,7 @@
     <script>
         var mcharts = echarts.init(document.querySelector('.dadas'))
         $.get('./china.json', function (ret) {
-            // ret 就是中国各个省份的数据
+            // ret 就是各个省份的数据
             // console.log(ret);
             echarts.registerMap('chinamap', ret)
             var option = {
